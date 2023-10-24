@@ -1,3 +1,33 @@
+const startButton = document.querySelector(".startButton");
+
+const optPaper = document.getElementById('paperDiv');
+const optScissors = document.getElementById('scissorsDiv');
+const optRock = document.getElementById('rockDiv');
+
+let userChoice = '';
+
+
+optPaper.addEventListener('click', function() {
+    optPaper.classList.add('selectedPaper');
+    optScissors.classList.remove('selectedScissors');
+    optRock.classList.remove('selectedRock');
+    userChoice = 'Paper';
+    
+})
+optScissors.addEventListener('click', function() {
+    optScissors.classList.add('selectedScissors');
+    optPaper.classList.remove('selectedPaper');
+    optRock.classList.remove('selectedRock');
+    userChoice = 'Scissors';
+})
+optRock.addEventListener('click', function() {
+    optRock.classList.add('selectedRock');
+    optScissors.classList.remove('selectedScissors');
+    optPaper.classList.remove('selectedPaper');
+    userChoice = 'Rock';
+})
+
+
 
 //Declare Choices
 const choices = ['Rock', 'Paper', 'Scissors'];
@@ -5,7 +35,7 @@ const choices = ['Rock', 'Paper', 'Scissors'];
 // Game Logic
 function playRound() {
 
-    let userChoice = prompt('Rock, Paper or Scissors?');
+    //let userChoice = getUserChoice();
     let compChoice = choices[Math.floor(Math.random()*choices.length)];
 
     if (userChoice == compChoice) {
@@ -38,7 +68,7 @@ function playRound() {
     }
 }
 
-
+/*
 function keepScore() {
 
     winner = playRound();
@@ -79,6 +109,7 @@ function playGame() {
         {}
     }
 }
+*/
+startButton.addEventListener("click", playRound);
 
 
-console.log(playGame());

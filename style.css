@@ -1,0 +1,36 @@
+.gameBox {
+    display: grid;
+    justify-content: center;
+    padding-top: 100px;
+}
+.computerBox {
+    background-color: grey;
+    width: 558px;
+    height: 200px;
+}
+.choiceBox {
+    width: 558px;
+    display: inline-flex;
+}
+.optPaper, .optScissors, .optRock {
+    width: 186px;
+    height: 322px;
+}
+.optPaper {
+    background-image: url("./resources/Paper.png");
+}
+.optScissors {
+    background-image: url("./resources/Scissors.png");
+}
+.optRock {
+    background-image: url("./resources/Rock.png");
+}
+.selectedPaper {
+    background-image: url("./resources/Paper\ Hover.png");
+}
+.selectedScissors {
+    background-image: url("./resources/Scissors\ Hover.png");
+}
+.selectedRock {
+    background-image: url("./resources/Rock\ Hover.png");
+}
