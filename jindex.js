@@ -1,18 +1,17 @@
-const startButton = document.querySelector(".startButton");
 
+const startButton = document.querySelector('.startButton');
 const optPaper = document.getElementById('paperDiv');
 const optScissors = document.getElementById('scissorsDiv');
 const optRock = document.getElementById('rockDiv');
 
 let userChoice = '';
 
-
+//Looks for selected option
 optPaper.addEventListener('click', function() {
     optPaper.classList.add('selectedPaper');
     optScissors.classList.remove('selectedScissors');
     optRock.classList.remove('selectedRock');
     userChoice = 'Paper';
-    
 })
 optScissors.addEventListener('click', function() {
     optScissors.classList.add('selectedScissors');
@@ -26,90 +25,119 @@ optRock.addEventListener('click', function() {
     optPaper.classList.remove('selectedPaper');
     userChoice = 'Rock';
 })
+let resultUser = document.getElementById('resultUser')
+let resultComp = document.getElementById('resultComp')
+//for default results display
+resultUser.style.backgroundImage = 'url(/resources/Start.jpg)'
+resultComp.style.backgroundImage = 'url(/resources/Start.jpg)'
 
-
-
-//Declare Choices
-const choices = ['Rock', 'Paper', 'Scissors'];
 
 // Game Logic
-function playRound() {
+function playRound() {  
 
-    //let userChoice = getUserChoice();
+    const choices = ['Rock', 'Paper', 'Scissors'];
+    //generate computer choice
     let compChoice = choices[Math.floor(Math.random()*choices.length)];
 
     if (userChoice == compChoice) {
-        alert('Player2: ' + compChoice + '. Its a tie.');
+        resultText.textContent = ' Its a tie!'
+            if (userChoice == 'Paper') {
+                resultUser.style.backgroundImage = 'url(/resources/Paper.jpg)'
+                resultComp.style.backgroundImage = 'url(/resources/Paper.jpg)'
+            }
+            if (userChoice == 'Scissors') {
+                resultUser.style.backgroundImage = 'url(/resources/Scissors.jpg)'
+                resultComp.style.backgroundImage = 'url(/resources/Scissors.jpg)'
+            }
+            if (userChoice == 'Rock') {
+                resultUser.style.backgroundImage = 'url(resources/Rock.jpg)'
+                resultComp.style.backgroundImage = "url(./resources/Rock.jpg)"
+            }
         return('Tie');
     }
     else if (userChoice == 'Rock' && compChoice == 'Paper') {
-        alert('Player2:' + compChoice + '. You lose!');
+        resultText.textContent = ' You lose!'
+        resultUser.style.backgroundImage = 'url(/resources/Rock.jpg)'
+        resultComp.style.backgroundImage = 'url(/resources/Rock.jpg)'
         return('P2');
     }
     else if (userChoice == 'Paper' && compChoice == 'Rock') {
-        alert('Player2:' + compChoice + '. You win!');
+        resultText.textContent = ' You win!'
+        resultUser.style.backgroundImage = 'url(/resources/Paper.jpg)'
+        resultComp.style.backgroundImage = 'url(/resources/Rock.jpg)'
         return('User');
     }
     else if (userChoice == 'Scissors' && compChoice == 'Rock') {
-        alert('Player2:' + compChoice + '. You lose!');
+        resultText.textContent = ' You lose!'
+        resultUser.style.backgroundImage = 'url(/resources/Scissors.jpg)'
+        resultComp.style.backgroundImage = 'url(/resources/Rock.jpg)'
         return('P2');
     }
     else if (userChoice == 'Scissors' && compChoice == 'Paper') {
-        alert('Player2:' + compChoice + '. You win!');
+        resultText.textContent = ' You win!'
+        resultUser.style.backgroundImage = 'url(/resources/Scissors.jpg)'
+        resultComp.style.backgroundImage = 'url(/resources/Paper.jpg)'
         return('User');
     }
     else if (userChoice == 'Rock' && compChoice == 'Scissors') {
-        alert('Player2:' + compChoice + '. You Win!');
+        resultText.textContent = ' You win!'
+        resultUser.style.backgroundImage = 'url(/resources/Rock.jpg)'
+        resultComp.style.backgroundImage = 'url(/resources/Scissors.jpg)'
         return('User');
     }
     else if (userChoice == 'Paper' && compChoice == 'Scissors') {
-        alert('Player2:' + compChoice + '. You lose!');
+        resultText.textContent = ' You lose!'
+        resultUser.style.backgroundImage = 'url(/resources/Paper.jpg)'
+        resultComp.style.backgroundImage = 'url(resources/Scissors.jpg)'
         return('P2');
+        
     }
 }
 
-/*
-function keepScore() {
+//let wins = 0;
+//let losses = 0;
 
-    winner = playRound();
-    
-    if (winner == 'User') {
-        wins = wins + 1;
-        alert('Wins:' + wins + 'Losses:' + losses);
-    }
-    else if (winner == 'P2') {
-        losses = losses + 1;
-        alert('Wins:' + wins + 'Losses:' + losses);
-    }
-    else if (winner == 'Tie') {
-        losses = losses + 0;
-    }
-    }
-//score count
+let resultText = document.getElementById('resultText');
+resultText.textContent = 'First to 5 points wins.';
+
+let scoreText = document.getElementById('scoreText');
+scoreText.textContent = 'Have your pick';
+
 let wins = 0;
 let losses = 0;
 
-function playGame() {
-    for(i=0; i<20; i++) {
+//keeping score 
+function keepScore() {
     
+    let winner = playRound();
+    
+    if (winner == 'User') {
+        wins = wins + 1;
+    }
+    else if (winner == 'P2') {
+        losses = losses + 1;
+    }
+    scoreText.textContent = ('Wins: ' + wins + ' Losses: ' + losses);
+
+    }
+
+function playGame() {
+    //resetting game after 5 points has been reached
     keepScore();
 
-    if (wins == 3) {
-        alert('You win the game! Wins:' + wins + 'Losses:' + losses);
-        break;
+    if (wins == 5) {
+        resultText.textContent = 'You win the Game!';
+        wins = 0;
+        losses = 0;
     }
-    else if (losses == 3) {
-        alert('You lose the game! Wins:' + wins + 'Losses:' + losses);
-        break;
+    else if (losses == 5) {
+        resultText.textContent = 'You lose the Game';
+        wins = 0;
+        losses = 0;
     }
-    else if ( wins + losses == 5) {
-        alert('Wins: ' + wins + 'Losses: ' + losses);
+    else {}
     }
-    else
-        {}
-    }
-}
-*/
-startButton.addEventListener("click", playRound);
+
+startButton.addEventListener("click", playGame);
 
 

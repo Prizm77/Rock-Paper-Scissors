@@ -1,36 +1,98 @@
-.gameBox {
-    display: grid;
+body {
+    display: flex;
     justify-content: center;
+    background-color: #d1d1d1;
+}
+
+.gameBox {
+    display: flex;
+    flex-direction: column;
     padding-top: 100px;
 }
 .computerBox {
-    background-color: grey;
     width: 558px;
-    height: 200px;
+    display: flex;
+    flex-direction: column;
+    padding-top: 5px;
+    align-items: center;
+    border: 3px solid black;
+    border-radius: 15px;
 }
 .choiceBox {
     width: 558px;
-    display: inline-flex;
+    display: flex;
+    justify-content: center;
+    padding-top: 15px;
 }
 .optPaper, .optScissors, .optRock {
-    width: 186px;
-    height: 322px;
+    width: 150px;
+    height: 150px;
+    background-size: contain;
+    border-radius: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 .optPaper {
-    background-image: url("./resources/Paper.png");
+    background-image: url("./resources/Paper.jpg");
 }
 .optScissors {
-    background-image: url("./resources/Scissors.png");
+    background-image: url("./resources/Scissors.jpg");
 }
 .optRock {
-    background-image: url("./resources/Rock.png");
+    background-image: url("./resources/Rock.jpg");
 }
 .selectedPaper {
-    background-image: url("./resources/Paper\ Hover.png");
+    background-image: url("./resources/Paper.jpg");
+    box-shadow: 0 0 10px #3a794a;
 }
 .selectedScissors {
-    background-image: url("./resources/Scissors\ Hover.png");
+    background-image: url("./resources/Scissors.jpg");
+    box-shadow: 0 0 10px #3a794a;
 }
 .selectedRock {
-    background-image: url("./resources/Rock\ Hover.png");
+    background-image: url("./resources/Rock.jpg");
+    box-shadow: 0 0 10px #3a794a;
+}
+.buttonBox {
+    display: flex;
+    justify-content: center;
+    margin-top: 15px;
+}
+#scoreText {
+    font-weight: bold;
+    font-size: larger;
+}
+.userChoiceDisplay, .computerChoiceDisplay {
+    height: 150px;
+    width: 160px;
+    border: 3px solid black;
+    background-size: contain;
+    border-radius: 15px;
+}
+.computerChoiceDisplay {
+    margin-left: 5px;
+}
+.displayWindow {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 24px;
+}
+.displayTextBox {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 558px;
+    height: 45px;
+    justify-content: center;
+}
+
+h2 {
+    text-align: center;
+    font-family: monospace;
+    height: 15px;
+}
+span {
+    font-family: monospace;
 }

@@ -9,13 +9,30 @@
   </head>
   <body>
     <div class="gameBox">
-      <div class="computerBox"></div>
+      <div class="computerBox">
+        <div class="displayTextBox">
+          <span id="resultText"></span>
+          <span id="scoreText"></span>
+        </div>
+        <div class="displayWindow">
+          <div>
+            <h2>Player</h2>
+            <div class="userChoiceDisplay" id="resultUser"></div>
+          </div>
+          <div>
+            <h2>Computer</h2>
+            <div class="computerChoiceDisplay" id="resultComp"></div>
+          </div>
+        </div>
+      </div>
       <div class="choiceBox">
         <div class="optPaper" id="paperDiv"></div>
         <div class="optScissors" id="scissorsDiv"></div>
         <div class="optRock" id="rockDiv"></div>
       </div>
-      <button class="startButton">Start</button>
+      <div class="buttonBox">
+        <button class="startButton">Start</button>
+      </div>
     </div>
     <script src="jindex.js"></script>
   </body>
